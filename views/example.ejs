@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Example</title>
+  </head>
+  <body>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+      }
+      th {
+        text-align: left;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+      function printLog() {
+        console.log('change!');
+      }
+
+      function getFundInfo(value) {
+        var table = document.getElementById("infoTable");
+
+        console.log(value);
+        $.ajax({
+          method: "POST",
+          url: "/api/v0/fund/info",
+          data: { name: value},
+          headers: {'Authorization': '2c0a50b4a76d83d77cae1f859a40de55c0b07877'}
+        })
+          .done(function(data) {
+            console.log(data);
+            if (data.length > 0) {
+              for (var i = 0; i < data.length; i++) {
+                // console.log(i);
+                var row = table.insertRow(0);
+                var chineseNameCell = row.insertCell(0);
+                var englishNameCell = row.insertCell(1);
+                var isinCodeCell = row.insertCell(2);
+                var currencyTypeCell = row.insertCell(3);
+                chineseNameCell.innerHTML = data[i]['fundChineseName'];
+                englishNameCell.innerHTML = data[i]['fundEnglishName'];
+                isinCodeCell.innerHTML = data[i]['isinCode'];
+                currencyTypeCell.innerHTML = data[i]['currencyType'];
+              }
+              var header = table.createTHead();
+              var row = header.insertRow(0);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(0);
+              var cell3 = row.insertCell(0);
+              var cell4 = row.insertCell(0);
+              cell1.innerHTML = "幣別";
+              cell2.innerHTML = "ISIN Code";
+              cell3.innerHTML = "英文名稱";
+              cell4.innerHTML = "中文名稱";
+            }
+            else {
+              table.innerHTML = "";
+            }
+          });
+      }
+      function getFundDetail(value) {
+        var content = document.getElementById("detailContent");
+        $.ajax({
+          method: "POST",
+          url: "/api/v0/fund/detail",
+          data: { name: value},
+          headers: {'Authorization': '2c0a50b4a76d83d77cae1f859a40de55c0b07877'}
+        })
+          .done(function(data) {
+            console.log(data);
+            content.innerHTML = JSON.stringify(data);
+          });
+      }
+    </script>
+    <h2>請輸入基金名稱快速查詢 info</h2>
+    <input type="text" oninput="getFundInfo(this.value);"/>
+    <hr>
+    <table id="infoTable">
+      <tbody>
+      </tbody>
+    </table>
+    <h2>請輸入基金名稱詳細查詢 detail</h2>
+    <input type="text" oninput="getFundDetail(this.value);"/>
+    <hr>
+    <p id="detailContent"></p>
+      <!-- <table>
+        <tbody>
+          <tr>
+            <th>中文欄位</th>
+            <th>資料</th>
+          </tr>
+          <tr>
+            <td>基金代碼</td>
+            <td>{this.state.fundId}</td>
+          </tr>
+          <tr>
+            <td>基金中文名稱</td>
+            <td>{this.state.fundChineseName}</td>
+          </tr>
+          <tr>
+            <td>基金英文名稱</td>
+            <td>{this.state.fundEnglishName}</td>
+          </tr>
+          <tr>
+            <td>基金種類</td>
+            <td>{this.state.fundEnglishName}</td>
+          </tr>
+          <tr>
+            <td>幣別</td>
+            <td>{this.state.currencyType}</td>
+          </tr>
+          <tr>
+            <td>ISIN代碼</td>
+            <td>{this.state.isinCode}</td>
+          </tr>
+          <tr>
+            <td>總代理機構代碼</td>
+            <td>{this.state.generalAgentId}</td>
+          </tr>
+          <tr>
+            <td>總代理機構名稱</td>
+            <td>{this.state.generalAgentName}</td>
+          </tr>
+          <tr>
+            <td>總代理機構簡稱</td>
+            <td>{this.state.fundEnglishName}</td>
+          </tr>
+          <tr>
+            <td>境外基金機構代碼</td>
+            <td>{this.state.offshoreInstitutionId}</td>
+          </tr>
+          <tr>
+            <td>境外基金機構名稱</td>
+            <td>{this.state.offshoreInstitutionName}</td>
+          </tr>
+          <tr>
+            <td>是否為境外基金</td>
+            <td>true</td>
+          </tr>
+          <tr>
+            <td>投資地區</td>
+            <td>區域/已開發歐洲</td>
+          </tr>
+          <tr>
+            <td>日期淨值</td>
+            <td>999</td>
+          </tr>
+      </tbody>
+    </table> -->
+  </body>
+</html>

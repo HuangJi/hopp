@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="/stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;JSON&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="/images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="JSON">JSON</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://howfintech.com'>Powered by HowFintech</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="introduction">Introduction</h1>
+
+<p>Welcome to the 好好投資 API! You can use our API to access fund API endpoints, which can get information on various funds.</p>
+
+<p>endpoints: <code class="prettyprint">http://howfintech.com/api/v1</code></p>
+
+<p>If you have any question, please feel free to contact wilson@howfintech.com.</p>
+
+<h1 id="authentication">Authentication</h1>
+
+<blockquote>
+<p>Make sure to replace <code class="prettyprint">2c0a50b4a76d83d77cae1f859a40de55c0b07877</code> with your API key.</p>
+</blockquote>
+
+<p>好好投資 uses API keys to allow access to the API. You can use public alpha API key: 2c0a50b4a76d83d77cae1f859a40de55c0b07877</p>
+
+<p>好好投資 expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code class="prettyprint">Authorization: 2c0a50b4a76d83d77cae1f859a40de55c0b07877</code></p>
+
+<aside class="notice">
+You must replace 2c0a50b4a76d83d77cae1f859a40de55c0b07877 with your personal API key.
+</aside>
+
+<h1 id="fund">Fund</h1>
+
+<h2 id="list">list</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"howF1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF4"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF7"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF8"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF9"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF11"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF17"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF18"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"howF19"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all funds IDs.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://howfintech.com/api/v1/fund/list</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to put your API key in header!
+</aside>
+
+<h2 id="detail">detail</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"chineseFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"聯博-美國收益基金 A2股美元"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"englishFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB FCP I American Income A2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agentChineseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"聯博證券投資信託股份有限公司"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isinCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LU0095030564"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fundManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paul J. DeNoon;Douglas J. Peebles"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"categoryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"美元靈活型債券"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"startAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"riskLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RR3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"inceptionYmdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19981026"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"regionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"單一國家型基金"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fundSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">10820304275</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sizeTransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20161031"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"managementFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"costodianFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brown Brothers Harriman(盧森堡)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"otherCurrencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"distributionStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"不分配"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bemchmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50% 巴克萊資本政府債券指數/ 35% JP 摩根全球新興市場債券指數/ 15% 巴克萊資本高收益(2% 限制指數)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"investmentStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"本基金的首要投資目標是致力以多元化定息證券組合,提供與保本相符的高流動收入.本基金的次要投資目標為透過增加投資以增加資本,以維持及(如可能)增加各股東投資金額的購買力."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latestNavDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20161118"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latestNav"</span><span class="p">:</span><span class="w"> </span><span class="mf">26.42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dayChange"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.06999999999999673</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"oneDayProfitRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.2642506606266392</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Sharpe1Y"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.34</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"highestInYearNav"</span><span class="p">:</span><span class="w"> </span><span class="mf">27.23</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lowestInYearNav"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.53</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Rr1M"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.36846</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Rr3M"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.18457</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"RrThisYear"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.03226</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fundShareholding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U.S. Treasury Bonds 8.70281\nU.S. Treasury Bonds 4.27297\nU.S. Treasury Notes 3.86988\nU.S. Treasury Bonds 3.77761\nFederal National Mortgage Association 2.80997\nU.S. Treasury Bonds 2.47193\nU.S. Treasury Bonds 2.34926\nU.S. Treasury Bonds 2.14554\nU.S. Treasury Notes 1.80973\nFederal National Mortgage Association 1.68337\n"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"20160104"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.77</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160104"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"20160105"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.82</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160105"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"20160106"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.86</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160106"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"20160107"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.83</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160107"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"20160108"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.86</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160108"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"20160111"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.8</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"TransDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160111"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific fund detail.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://howfintech.com/api/v1/fund/detail</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>howfundId</td>
+<td>string</td>
+<td>required</td>
+<td>ID you want to find.</td>
+<td>howF156</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to put your API key in header!
+</aside>
+
+<h1 id="market">Market</h1>
+
+<h2 id="index">index</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"深証綜合指數"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"亞洲指數"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/08"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"quote"</span><span class="p">:</span><span class="w"> </span><span class="mf">2077.37</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"change"</span><span class="p">:</span><span class="w"> </span><span class="mf">-12.96</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.62</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"yearROI"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.38</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"深圳成指"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"亞洲指數"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/08"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"quote"</span><span class="p">:</span><span class="w"> </span><span class="mf">10812.3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"change"</span><span class="p">:</span><span class="w"> </span><span class="mf">-43.42</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"yearROI"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.6</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"深証A股"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"亞洲指數"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/08"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"quote"</span><span class="p">:</span><span class="w"> </span><span class="mf">2173.33</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"change"</span><span class="p">:</span><span class="w"> </span><span class="mf">-13.61</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.62</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"yearROI"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.38</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all funds IDs.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://howfintech.com/api/v1/market/index</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to put your API key in header!
+</aside>
+
+          <h1 id="errors">Errors</h1>
+
+<p>The HowFintech API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The fund requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified fund could not be found</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="JSON">JSON</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

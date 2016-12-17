@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="/stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;JSON&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="/images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="JSON">JSON</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://howfintech.com'>Powered by HowFintech</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="introduction">Introduction</h1>
+
+<p>Welcome to the 好好投資 API! You can use our API to access fund API endpoints, which can get information on various funds.</p>
+
+<p>endpoints: <code class="prettyprint">http://howfintech.com/api/v0</code></p>
+
+<p>If you have any question, please feel free to contact wilson@howfintech.com.</p>
+
+<h1 id="authentication">Authentication</h1>
+
+<blockquote>
+<p>Make sure to replace <code class="prettyprint">2c0a50b4a76d83d77cae1f859a40de55c0b07877</code> with your API key.</p>
+</blockquote>
+
+<p>好好投資 uses API keys to allow access to the API. You can use public alpha API key: 2c0a50b4a76d83d77cae1f859a40de55c0b07877</p>
+
+<p>好好投資 expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code class="prettyprint">Authorization: 2c0a50b4a76d83d77cae1f859a40de55c0b07877</code></p>
+
+<aside class="notice">
+You must replace 2c0a50b4a76d83d77cae1f859a40de55c0b07877 with your personal API key.
+</aside>
+
+<h1 id="fund">Fund</h1>
+
+<h2 id="list">list</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"保德信中國好時平衡證券投資信託基金－人民幣月配息型"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"保德信中國好時平衡證券投資信託基金－美元月配息型"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"元大全球不動產證券化證券投資信託基金-人民幣"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"元大美元傘型證券投資信託基金之元大全球美元公司債券證券投資信託基金-美元(A)不配息"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球日本小型公司基金X - 2 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球日本股票基金X - 2 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球拉丁美洲股票基金X - 2 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球歐元高收益債券基金X - 1 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球澳洲股票基金X - 2 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"永豐標普東南亞指數證券投資信託基金美元"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球新興市場公司債券基金X - 2 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球新興市場當地貨幣債券基金X - 1 類"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"安本環球新興市場當地貨幣債券基金X - 2 類"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all funds Chinese name list.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://howfintech.com/api/v0/fund/list</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember to put your API key in header!
+</aside>
+
+<h2 id="detail">detail</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"fundChineseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"瀚亞亞太豐收平衡基金A類型-人民幣"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agentChineseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fundManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latestNavDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latestNav"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"highestInYearNav"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lowestInYearNav"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnRateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnRateFromM"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.82671</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnRateFromQ"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.99944</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"returnRateFromY"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.81737</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"initialAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"riskLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"foundDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20141208"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"netAsset"</span><span class="p">:</span><span class="w"> </span><span class="mf">585715564.2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totalAssetDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"managementFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"costodianFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"otherCurrencyType"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"---"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"fundShareholding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"---"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"3M"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"6M"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"1Y"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"2Y"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"3Y"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"documentDownload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bemchmark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"investmentStrategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"原則上,本基金自成立日起屆滿三個月後,投資於股票(含承銷股票),存託憑證,債券及其他固定收益證券之總金額應達本基金淨資產價值之百分之七十以上;投資於國內外股票(含承銷股票)及存託憑證之總金額不得高於本基金淨資產價值之百分之九十(含)且不得低於百分之十(含);投資於外國有價證券之總金額不得低於本基金淨資產價值之百分之六十(含);投資於前述亞太國家或地區之有價證券總金額不得低於本基金淨資產價值之百分之六十(含);投資所在國或地區之國家主權評等未達公開說明書所列信用評等機構評定等級者,投資該國或地區之政府債券及其他債券總金額,不得超過本基金淨資產價值之百分之三十."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"---"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific fund detail.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://howfintech.com/api/v0/fund/detail</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Full name you want to find.</td>
+<td>瀚亞亞太豐收平衡基金A類型-人民幣</td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<p>The HowFintech API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The fund requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified fund could not be found</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="JSON">JSON</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
