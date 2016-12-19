@@ -121,35 +121,48 @@ app.use((err, req, res) => {
 
 // Update all per 24 hours.
 const initialDateString = moment().utcOffset('+0800').format('YYYYMMDD')
-fundRichUpdater.updateAll(initialDateString)
-fundClearUpdater.updateAll(initialDateString)
+// fundRichUpdater.updateAll(initialDateString)
+// fundClearUpdater.updateAll(initialDateString)
 // const source = 'fundRich'
 // const type = 'FRAllocation'
 
-// fundRichUpdater.getMissIdList(source, type, initialDateString, (missIdError, results) => {
-//   if (missIdError) {
-//     console.error(`missIdError:${missIdError}`)
-//   } else {
-//     console.log(`missId:${results}`)
-//     if (type === 'FRDetail') {
-//       for (const id of results) {
-//         fundRichUpdater.updateOneFundRichDetailDataById(id, initialDateString)
-//       }
-//     } else if (type === 'FRNav') {
-//       for (const id of results) {
-//         fundRichUpdater.updateOneFundRichNavDataById(id, initialDateString)
-//       }
-//     } else if (type === 'FRAllocation') {
-//       for (const id of results) {
-//         fundRichUpdater.updateOneFundRichAllocationDataById(id, initialDateString)
-//       }
-//     } else if (type === 'FRDividend') {
-//       for (const id of results) {
-//         fundRichUpdater.updateOneFundRichDividendDataById(id, initialDateString)
-//       }
-//     }
-//   }
-// })
+
+const typeList = ['FRDetail', 'FRNav', 'FRAllocation', 'FRDividend']
+
+function recursiveUpdater(list, date) {
+  for (const type of list) {
+    fundRichUpdater.getMissIdList('fundRich', type, date, (missIdError, results) => {
+      if (missIdError) {
+        console.error(`missIdError:${missIdError}`)
+      } else if (results.length === 0) {
+        console.log(`${type} no missing!`)
+        return 0
+      } else {
+        console.log(`${type} missId:${results}`)
+        if (type === 'FRDetail') {
+          for (const id of results) {
+            fundRichUpdater.updateOneFundRichDetailDataById(id, date)
+          }
+        } else if (type === 'FRNav') {
+          for (const id of results) {
+            fundRichUpdater.updateOneFundRichNavDataById(id, date)
+          }
+        } else if (type === 'FRAllocation') {
+          for (const id of results) {
+            fundRichUpdater.updateOneFundRichAllocationDataById(id, date)
+          }
+        } else if (type === 'FRDividend') {
+          for (const id of results) {
+            fundRichUpdater.updateOneFundRichDividendDataById(id, initialDateString)
+          }
+        }
+      }
+      return 0
+    })
+  }
+}
+
+// recursiveUpdater(typeList, initialDateString)
 
 setInterval(() => {
   const currentDate = moment().utcOffset('+0800')
@@ -161,5 +174,10 @@ setInterval(() => {
   if (currentDate.hours() === 11) fundClearUpdater.updateAll(currentDate.format('YYYYMMDD'))
 }, 1000 * 3600 * 1)
 // setInterval(() => fundClearUpdater.updateAll(), 1000 * 3600 * 24)
+
+// setInterval(() => {
+//   const currentDate = moment().utcOffset('+0800')
+//   if (currentDate.hours() === 13) recursiveUpdater(typeList, currentDate.format('YYYYMMDD'))
+// }, 1000 * 60 * 5)
 
 module.exports = app

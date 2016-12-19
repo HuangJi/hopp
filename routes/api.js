@@ -1,7 +1,7 @@
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
-const scalegridConnect = require('../daemon/scalegridMongo').scalegridConnect
-const scalegridPromiseConnect = require('../daemon/scalegridMongo').scalegridPromiseConnect
+const scalegridConnect = require('../daemon/scalegridMongo').connect
+const scalegridPromiseConnect = require('../daemon/scalegridMongo').promiseConnect
 const howfundHelper = require('../parseCode/howfundHelper')
 const co = require('co')
 const _ = require('lodash')
@@ -263,8 +263,8 @@ router.post('/v1/fund/detail', (req, res) => {
         const tejObject = yield howfundHelper.parseTejData(tejData.data)
         const shareHolding = yield howfundHelper.parseStockTopData(frAllocationData.data.StockTop)
         const dailyData = yield howfundHelper.getDailyDataFromHistoryData(fundClearNavData.data)
-        console.log(`fundShareholding:${shareHolding}`)
-        console.log(`dailyData:${JSON.stringify(dailyData, null, 4)}`)
+        // console.log(`fundShareholding:${shareHolding}`)
+        // console.log(`dailyData:${JSON.stringify(dailyData, null, 4)}`)
         const detailObject = {
           chineseFullName: frDetailObject.Name,
           englishFullName: frDetailObject.NameEng,
@@ -302,7 +302,7 @@ router.post('/v1/fund/detail', (req, res) => {
           if (key !== 'dayChange' || key !== 'oneDayProfitRate') detailObject[key] = detailObject[key] || '---'
           if (detailObject[key] === '0') detailObject[key] = '---'
         }
-        console.log(`frdetail name:${frDetailObject.Name}`)
+        // console.log(`frdetail name:${frDetailObject.Name}`)
         res.json(detailObject)
         scalegridDb.close()
       }).catch((err) => {

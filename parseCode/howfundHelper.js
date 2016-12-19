@@ -122,7 +122,7 @@ function getDailyDataFromHistoryData(data) {
   return new Promise((resolve) => {
     co(function* __() {
       const today = new Date()
-      console.log(`Object.keys(data):${Object.keys(data)}`)
+      // console.log(`Object.keys(data):${Object.keys(data)}`)
       const dateKeys = _.filter(Object.keys(data), x =>
         x.substring(0, 4) === today.getFullYear().toString()
       )

@@ -13,4 +13,7 @@ module.exports = {
       callback(err, db)
     })
   },
+  promiseConnect: function promiseConnect() {
+    return MongoClient.connect(mongodbUrl, serverOption)
+  },
 }
